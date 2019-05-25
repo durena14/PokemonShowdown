@@ -11,12 +11,12 @@ public class Pokemon{
         this.name=name;
         type1=types[0];
         type2=(types.length==1)?"":types[1];
-        hpo=hp;
-        hpc=hp;
-        this.attack=attack;
-        this.defense=defense;
-        this.speed=speed;
-        level=100;
+        level=(int) (Math.random()*11)+79;
+        hpo=effectiveHP(hp);
+        hpc=effectiveHP(hp);
+        this.attack=effectiveStat(attack);
+        this.defense=effectiveStat(defense);
+        this.speed=effectiveStat(speed);
         moveset=new Move[moves.length];
         for(int i=0;i<moveset.length;i++){
             moveset[i]=moves[i];
@@ -67,5 +67,25 @@ public class Pokemon{
     
     public int getCurrentHP(){
         return hpc;
+    }
+    
+    public int getAttack(){
+        return attack;
+    }
+    
+    public int getDefense(){
+        return defense;
+    }
+    
+    public int getSpeed(){
+        return speed;
+    }
+    
+    private int effectiveHP(int base){
+        return (int)((((((base+31)*2)+(Math.sqrt(85)/4))*level)/100)+level+10);
+    }
+    
+    private int effectiveStat(int base){
+        return (int)((((((base+31)*2)+(Math.sqrt(85)/4))*level)/100)+5);
     }
 }
