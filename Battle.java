@@ -21,11 +21,7 @@ public class Battle{
     
     //Ethan Kim
     private int damageCalc(Move userMove, Pokemon user, Pokemon opp){
-        double random=Math.random();
-        int critical=1;
-        if(random<0.10)
-            critical=2;
-        float modifier=userMove.getEffectiveness(opp)*userMove.stab(user)*critical;
+        float modifier=userMove.getEffectiveness(opp)*userMove.stab(user)*userMove.getCritModifier();
         return (int) (((((2*user.getLevel())/5+2) * userMove.getPower() * (user.getAttack()/opp.getDefense()))/50 + 2) * modifier);
     }
     
@@ -137,11 +133,11 @@ public class Battle{
         }else if(adv<=-9){
             return hitOrSwap(-1.0);
         }else if(adv<=-6){
-            return hitOrSwap(0.05);
+            return hitOrSwap(0.0125);
         }else if(adv<=-3){
-            return hitOrSwap(0.1);
+            return hitOrSwap(0.025);
         }else if(adv<0){
-            return hitOrSwap(0.2);
+            return hitOrSwap(0.);
         }else{
             return hitOrSwap(0.90);
         }
