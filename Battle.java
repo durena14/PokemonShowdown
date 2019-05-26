@@ -128,17 +128,17 @@ public class Battle{
     public boolean AITurn(){
         int adv=advantage(currentOpp,currentUser);
         if(adv>0){
-            hitOrSwap(1.0);
+            return hitOrSwap(1.0);
         }else if(adv<=-9){
-            hitOrSwap(-1.0);
+            return hitOrSwap(-1.0);
         }else if(adv<=-6){
-            hitOrSwap(0.05);
+            return hitOrSwap(0.05);
         }else if(adv<=-3){
-            hitOrSwap(0.1);
+            return hitOrSwap(0.1);
         }else if(adv<0){
-            hitOrSwap(0.2);
+            return hitOrSwap(0.2);
         }else{
-            hitOrSwap(0.90);
+            return hitOrSwap(0.90);
         }
     }
     
