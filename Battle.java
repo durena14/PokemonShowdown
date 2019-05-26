@@ -30,13 +30,17 @@ public class Battle{
     }
     
     public void hit(Move userMove, Pokemon user, Pokemon opp){
-        opp.takeDamage(damageCalc(userMove,user,opp));
-        if(userMove.getName().equals("Struggle")){
-            user.takeDamage(damageCalc(userMove,user,opp)/2);
+        double random=Math.random();
+        if(random<=userMove.getAccuracy()){
+            opp.takeDamage(damageCalc(userMove,user,opp));
+            if(userMove.getName().equals("Struggle")){
+                user.takeDamage(damageCalc(userMove,user,opp)/2);
+            }
+            userMove.useMove();
+            user.outOfPP();
+        }else{
+            //dialogue box (you missed)
         }
-        userMove.useMove();
-        user.outOfPP();
-        refreshUI();
     }
     
     public Pokemon getCurrentUser(){
@@ -111,6 +115,7 @@ public class Battle{
         
         return moveIndex;
     }
+   
     
     private int advantage(Pokemon user, Pokemon opp){
         return typeAdv(user,opp)+HPAdv(user)+speedAdv(user,opp)-HPAdv(opp);
@@ -170,7 +175,7 @@ public class Battle{
         int maxAdvantage=advantage(currentOpp,currentUser);
         for(int i=0;i<AI.length;i++){
             if(!AI[i].isDead()){
-                if(typeAdv(AI[i],currentUser)>maxAdvantage){
+                if(advantage(AI[i],currentUser)>maxAdvantage){
                     maxAdvantage=advantage(AI[i],currentUser);
                     currentOppIndex=i;
                     currentOpp=AI[currentOppIndex];
