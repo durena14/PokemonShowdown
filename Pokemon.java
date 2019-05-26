@@ -10,7 +10,7 @@ public class Pokemon{
     public Pokemon(String name, int hp,int attack, int defense, int speed, String[] types,Move[] moves,int pokedex){
         this.name=name;
         type1=types[0];
-        type2=(types.length==1)?"":types[1];
+        type2=(types[1]==null)?"":types[1];
         level=(int) (Math.random()*11)+79;
         hpo=effectiveHP(hp);
         hpc=effectiveHP(hp);
