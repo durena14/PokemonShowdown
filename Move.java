@@ -159,6 +159,18 @@ public class Move{
     public float getEffectiveness(Pokemon opp){
         return effective(type,opp.getType().get(0))*effective(type,opp.getType().get(1));
     }
+    
+    public String effectiveMessage(Pokemon opp){
+        if(getEffectiveness(opp)>=2){
+            return "It's super effective!";
+        }else if(getEffectiveness(opp)==0){
+            return "It had no effect...";
+        }else if(getEffectiveness(opp)<1){
+            return "It's not very effective.";
+        }else{
+            return "";
+        }
+    }
 
      public float stab(Pokemon user){
         if(type.equals(user.getType().get(0))||type.equals(user.getType().get(1))){
