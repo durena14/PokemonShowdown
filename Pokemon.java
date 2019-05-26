@@ -88,4 +88,18 @@ public class Pokemon{
     private int effectiveStat(int base){
         return (int)((((((base+31)*2)+(Math.sqrt(85)/4))*level)/100)+5);
     }
+    
+    public void outOfPP(){
+        boolean moves=false;
+        for(int i=0;i<moveset.length;i++){
+            if(moveset[i].getPP()>0){
+                moves=true;
+            }
+        }
+        
+        if(!moves){
+            moveset=new Move[1];
+            moveset[0]=new Move("Struggle",35,0.95f,"normal",10000);
+        }
+    }
 }
