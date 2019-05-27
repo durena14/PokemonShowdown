@@ -201,7 +201,9 @@ public class Move{
     }
     
     public void useMove(){
-        pp--;
+        if(!name.equals("Struggle")){ 
+            pp--;
+        }
     }
     
     public int getCritModifier(){
