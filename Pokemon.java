@@ -82,11 +82,11 @@ public class Pokemon{
     }
     
     private int effectiveHP(int base){
-        return (int)((((((base+31)*2)+(Math.sqrt(85)/4))*level)/100)+level+10);
+        return (int)((((((base+31)*2)+(Math.sqrt(127.5)/4))*level)/100)+level+10);
     }
     
     private int effectiveStat(int base){
-        return (int)((((((base+31)*2)+(Math.sqrt(85)/4))*level)/100)+5);
+        return (int)((((((base+31)*2)+(Math.sqrt(127.5)/4))*level)/100)+5);
     }
     
     public void outOfPP(){
